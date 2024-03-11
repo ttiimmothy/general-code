@@ -5,6 +5,7 @@ TOKEN=process.env.TOKEN
 REPO_URL="https://api.github.com/user/repos?per_page=100"
 REPOS=$(curl -s -H "Authorization: Bearer ${TOKEN}" ${REPO_URL} | grep -o '"ssh_url": "git@github.com:ttiimmothy[^"]*"' | awk -F'"' '{print $4}')
 # REPOS=$(curl -s -H "Authorization: Bearer ${TOKEN}" ${REPO_URL} | grep -o '"ssh_url": "git@github.com:ttiimmothy[^"]*"' | awk -F'"' '!/manga-and-comics/{print $4}')
+# REPOS=$(curl -s -H "Authorization: Bearer ${TOKEN}" ${REPO_URL} | grep -o '"ssh_url": "git@github.com:ttiimmothy[^"]*"' | awk -F'"' '!/manga-and-comics/{print}')
 # REPOS=$(curl -s -H "Authorization: Bearer ${TOKEN}" ${REPO_URL} | grep -o '"ssh_url": "git@github.com:ttiimmothy[^"]*"' | awk -F'"' '{print}')
 # REPOS=$(curl -s -H "Authorization: Bearer ${TOKEN}" ${REPO_URL} | grep -o '"ssh_url": "[^"]*"' | awk -F'"' '!/manga-and-comics/{print}')
 # echo "${REPOS}"
