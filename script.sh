@@ -11,14 +11,14 @@ REPOS=$(curl -s -H "Authorization: Bearer ${TOKEN}" ${REPO_URL} | grep -o '"ssh_
 # REPOS=$(curl -s -H "Authorization: Bearer ${TOKEN}" ${REPO_URL} | grep -o '"ssh_url": "[^"]*"' | awk -F'"' '!/manga-and-comics/{print}')
 # echo "${REPOS}"
 
-echo "{\"repository_url\":{" > repository.json
+echo "{\"repository_url\":{" > $HOME/developer/github_repository/repository.json
 index=1
 for repo in ${REPOS}; do
   repo_name=$(basename ${repo})
-  echo "\"${index}\": [\"${repo_name}\"]," >> repository.json
+  echo "\"${index}\": [\"${repo_name}\"]," >> $HOME/developer/github_repository/repository.json
   ((index++))
 done
-echo "}}" >> repository.json
+echo "}}" >> $HOME/developer/github_repository/repository.json
 
 # for repo in ${REPOS}; do
 #   repo_name=$(basename ${repo} .git)
